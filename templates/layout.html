@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="zxx">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}{% endblock %}</title>
+
+  {% block logo %} {% endblock %}
+  {% block styles %}
+  <!-- google fonts -->
+  <link href="http://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <!-- google fonts -->
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/style-starter.css')}}">
+  <!-- Template CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800|Roboto:400,500,700" rel="stylesheet">
+  <!-- Theme CSS -->
+  <!-- Demo CSS - No need to use these in your project -->
+
+  <script src="static/assets/js/my.js"></script>
+  <script src="{{ url_for('static',filename='assets/js/my.js')}}"></script>
+  {% endblock %}
+</head>
+
+<body>
+  <!--header-->
+  <header id="site-header" class="fixed-top">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg stroke">
+      <a class="navbar-brand" href="#index.html">
+          <img src="static/assets/images/logo2.png" alt="Your logo" title="Your logo" style="height:70px;" />
+      </a>
+        <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+          data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+          <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+          </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item {% block page_active1 %}{% endblock %}">
+              <a class="nav-link" href="/">Accueil {%block page_current1 %}{% endblock %}</a>
+            </li>
+            <li class="nav-item {% block page_active2 %}{% endblock %}" >
+              <a class="nav-link" href="destination">Destinations {%block page_current2 %}{% endblock %}</a>
+            </li>
+            <li class="nav-item {% block page_active3 %}{% endblock %}">
+              <a class="nav-link" href="about">Qui sommes-nous {%block page_current3 %}{% endblock %}</a>
+            </li>
+            <li class="nav-item {% block page_active4 %}{% endblock %}">
+              <a class="nav-link" href="contact">Contact {%block page_current4 %}{% endblock %}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="d-lg-block mobile-position1">
+            <div class="dropdown">
+                <button class="btn btn-primary btn-icon-only rounded-circle" type="button" id="dropdown_user_account"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="btn-inner--icon">
+                    <i class="fa fa-user"></i>
+                  </span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdown_user_account">
+                  <h6 class="dropdown-header">User menu</h6>
+                  <a class="dropdown-item" href="#">
+                    <i class="fa fa-envelope text-primary"></i> Messages
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="fa fa-cog text-primary"></i> Settings
+                  </a>
+                  <div class="dropdown-divider" role="presentation"></div>
+                  <a class="dropdown-item" href="inscrit.html">
+                    <i class="fa fa-sign-out-alt text-primary"></i>Se connecter
+                  </a>
+                </div>
+              </div>
+        </div>
+        <!-- toggle switch for light and dark theme -->
+        <div class="mobile-position">
+          <nav class="navigation">
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox">
+                <div class="mode-container">
+                  <i class="gg-sun"></i>
+                  <i class="gg-moon"></i>
+                </div>
+              </label>
+            </div>
+          </nav>
+        </div>
+        <!-- //toggle switch for light and dark theme -->
+      </nav>
+    </div>
+  </header>
+  <!-- //header -->
+
+  {% block content %}
+  {%  endblock %}
+  <footer>
+    <!-- footer -->
+    <section class="w3l-footer">
+      <div class="w3l-footer-16-main py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 column">
+              <div class="row">
+                <div class="col-md-4 column footer-c">
+                  <h3>Company</h3>
+                  <br>
+                  <ul class="footer-gd-16">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="about">A propos de nous</a></li>
+                    <li><a href="destination">Services</a></li>
+                    <li><a href="contact">Contactez-nous</a></li>
+                    <li><a href="politique">Politique de confidentialité</a></li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 column pl-lg-5 column4 mt-lg-0 mt-5 ">
+              <h3>Newsletter </h3>
+              <div class="end-column">
+                <h4>Obtenez les dernières mises à jour et offres.</h4>
+                <form action="news.html" class="subscribe" method="post">
+                  <input type="email" name="email" placeholder="Email Address" required="">
+                  <button type="submit">Go</button>
+                </form>
+                <p>Inscrivez-vous à nos dernières nouvelles et articles, nous ne vous donnerons pas de courriers indésirables.</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex below-section justify-content-between align-items-center pt-4 mt-5">
+            <div class="columns text-lg-left text-center">
+              <p>Copyright &copy; 2022. Company name All rights reserved.</p>
+            </div>
+            <div class="columns-2 mt-lg-0 mt-3">
+              <ul class="social">
+                <li><a href="https://fr-fr.facebook.com/"><span class="fa fa-facebook" aria-hidden="true"></span></a>
+                </li>
+                <li><a href="https://www.instagram.com/?hl=fr"><span class="fa fa-instagram"
+                      aria-hidden="true"></span></a>
+                </li>
+                <li><a href="https://twitter.com/?lang=fr"><span class="fa fa-twitter" aria-hidden="true"></span></a>
+                </li>
+                <li><a href="https://www.google.com/intl/fr/gmail/about/"><span class="fa fa-google-plus"
+                      aria-hidden="true"></span></a>
+                </li>
+                <li><a href="https://github.com/"><span class="fa fa-github" aria-hidden="true"></span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- move top -->
+      <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-angle-up"></span>
+      </button>
+      <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+          scrollFunction()
+        };
+
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+          } else {
+            document.getElementById("movetop").style.display = "none";
+          }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
+      </script>
+      <!-- //move top -->
+      <script>
+        $(function () {
+          $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+          })
+        });
+      </script>
+    </section>
+    <!-- //footer -->
+  </footer>
+
+
+  <!-- Template JavaScript -->
+  <script src="static/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="static/assets/js/theme-change.js"></script>
+  <!--/slider-js-->
+  <script src="static/assets/js/jquery.min.js"></script>
+  <script src="static/assets/js/modernizr-2.6.2.min.js"></script>
+  <script src="static/assets/js/jquery.zoomslider.min.js"></script>
+  <!--//slider-js-->
+  <script src="static/assets/js/owl.carousel.js"></script>
+  <!-- script for tesimonials carousel slider -->
+  <script>
+    $(document).ready(function () {
+      $("#owl-demo1").owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          736: {
+            items: 1,
+            nav: false
+          },
+          1000: {
+            items: 1,
+            nav: false,
+            loop: true
+          }
+        }
+      })
+    })
+  </script>
+
+  <!-- //script for tesimonials carousel slider -->
+  <!-- stats number counter-->
+  <script src="static/assets/js/jquery.waypoints.min.js"></script>
+  <script src="static/assets/js/jquery.countup.js"></script>
+  <script>
+    $('.counter').countUp();
+  </script>
+  <!-- //stats number counter -->
+
+  <!--/MENU-JS-->
+  <script>
+    $(window).on("scroll", function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 80) {
+        $("#site-header").addClass("nav-fixed");
+      } else {
+        $("#site-header").removeClass("nav-fixed");
+      }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+      $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+      $(window).on("resize", function () {
+        if ($(window).width() > 991) {
+          $("header").removeClass("active");
+        }
+      });
+    });
+  </script>
+  <!--//MENU-JS-->
+  <script src="static/assets/js/bootstrap.min.js"></script>
+</body>
+
+</html>

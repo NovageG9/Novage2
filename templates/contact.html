@@ -1,0 +1,61 @@
+{% extends "layout_contenu.html" %}
+{% block title %} Destinations {% endblock %}
+{% block page_active4 %}active{% endblock %}
+{% block page_current4 %}<span class="sr-only">(current)</span>{% endblock %}
+{% block sous_title%}Contactez-nous{% endblock %}
+{% block lien %}index.html{% endblock %}
+{% block last_page %}Accueil{% endblock %}
+{% block current_page %}Contact{% endblock %}
+{% block bar %}
+<section class="w3l-contact" id="contact">
+  <div class="contact-infubd py-5">
+    <div class="container py-lg-3">
+      <div class="contact-grids row">
+        <div class="col-lg-6 contact-left">
+          <div class="partners">
+            <div class="cont-details">
+              <h5>Contactez-nous</h5>
+              <p class="mt-3 mb-4">Bonjour, Nous sommes disponibles 24 heures sur 24 et 7 jours sur 7 par fax, e-mail ou par téléphone. Laissez-nous un message pour que nous puissions en discuter davantage.</p>
+            </div>
+            <div class="hours">
+              <h6 class="mt-4">Email:</h6>
+              <p> <a href="mailto:mail@traversal.com">
+                mail@Novage.com</a></p>
+              <h6 class="mt-4">Rendez-nous visite :</h6>
+              <p> 2 Rue du Doyen Gabriel Marty, 31000 Toulouse.</p>
+              <h6 class="mt-4">Contact:</h6>
+              <p class="margin-top"><a href="tel:+44-255-366-88">+33-08-66-77-88-21</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mt-lg-0 mt-5 contact-right">
+          <form action="confirmation.html" method="post" class="signin-form">
+            <div class="input-grids">
+              <div class="form-group">
+                <input type="text" name="clientName" id="clientName" placeholder="Nom et prenom*" class="contact-input" />
+              </div>
+              <div class="form-group">
+                <input type="email" name="clientEmail" id="clientEmail" placeholder="Email*" class="contact-input" required="" />
+              </div>
+              <div class="form-group">
+                <input type="text" name="problemSubect" id="problemSubect" placeholder="Sujet*" class="contact-input" />
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea name="problemMessage" id="problemMessage" placeholder="Saisissez votre message ici*" required=""></textarea>
+            </div>
+            <div class="text-right">
+              <button class="btn btn-style btn-primary">Envoyer</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+      <div class="map mt-5 pt-md-5">
+        <h5>Où nous sommes</h5>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.9939366708177!2d1.4342966106197597!3d43.606667855320374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebb6649e8f0f9%3A0x21f5de3fef748768!2sUniversit%C3%A9%20Toulouse%201%20Capitole!5e0!3m2!1sfr!2sfr!4v1671097332731!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+</section>
+{% endblock %}
+
