@@ -29,5 +29,14 @@ def politique_page():
     return render_template('politique.html')
 
 
+@app.route('/login')
+def login_page():
+    return render_template('login.html')
+
+@app.route('/inscrit')
+def inscrit_page():
+    return render_template('inscription.html')
+
+
 if __name__ == "__main__":
     app.run()

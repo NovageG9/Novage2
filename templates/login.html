@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %} Novage {% endblock %}
+{% block logo %}<link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo2.png">{% endblock %}
+{%block page_active1 %}active{% endblock %}
+{%block page_current1 %}<span class="sr-only">(current)</span>{% endblock %}
+
+{% block content %}
+<div>
+  {% block bar %}
+      <section class="w3l-contact" id="contact">
+  <div class="container d-flex align-items-center no-padding">
+    <div class="col">
+      <div class="row justify-content-center">
+        <div class="col-lg-4">
+          <div class="card bg-dark text-white">
+            <div class="card-body">
+              <button type="button" class="btn btn-primary btn-nobg btn-zoom--hover mb-5">
+                <span class="btn-inner--icon"><i class="fas fa-arrow-left"></i></span>
+              </button>
+              <span class="clearfix"></span>
+              <img src="assets/images/logo2.png" style="width: 50px;">
+              <h4 class="heading h3 text-white pt-3 pb-5">Bienvenue,<br>
+                identifiez-vous.</h4>
+              <form class="form-primary" action="index_login.html">
+                <div class="form-group">
+                  <input type="email" class="form-control" id="input_email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" id="input_password" placeholder="Password" required>
+                </div>
+                <div class="text-left mt-4 fl"><a href="inscrit" class="text-white ptp_font">Créer un compte?</a></div>
+                <div class="text-right mt-4 fr"><a href="forget" class="text-white ptp_font">Forgot password?</a></div>
+                <br>
+                <br>
+                <button type="submit" onclick="afterLogin()" class="btn btn-style2  btn-block btn-lg bg-white mt-4">SE CONNECTER</button>
+                <button type="reset" class="btn btn-style2 btn-block btn-lg bg-white mt-4">RESET</button>
+
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    {% endblock %}
+</div>
+{% endblock %}
