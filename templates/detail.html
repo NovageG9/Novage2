@@ -1,0 +1,75 @@
+{% extends "layout_contenu.html" %}
+{% block title %} Destinations {% endblock %}
+{% block page_active4 %}active{% endblock %}
+{% block page_current4 %}<span class="sr-only">(current)</span>{% endblock %}
+{% block sous_title%}Détail{% endblock %}
+{% block lien %}service.html{% endblock %}
+{% block last_page %}Destinations{% endblock %}
+{% block current_page %}Détail{% endblock %}
+{% block bar %}
+
+ <div class="grids-1 py-5">
+      <div class="container">
+        <div class="row cols-xs-space cols-sm-space align-items-center">
+          <div class="col-lg-6 row">
+              <div class="card">
+                <div class="card-header py-4">
+                  <div class="d-flex align-items-center">
+                    <div class="avatar-content">
+                      <h5 class="h6 mb-0">{{ infos[0]["lieu"] }}</h5>
+                      <small class="d-block text-muted">{{ infos[0]["ville"] }}</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-image">
+                  <img src="static/assets/images/lieu/Ile_de_france.jpg" class="img-fluid">
+                </div>
+                <div class="card-body">
+                  <div class="row mb-1">
+                    <div class="col">
+                      <div class="card-icon-actions card-icon-actions-lg">
+                        <a onclick="like()" class="love active"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                          &nbsp&nbsp<a onclick="addFavo()"><i class="fa fa-bookmark"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <h6 class="heading h6 mb-3"><span id="like">0 likes</span></h6>
+                  </div>
+                <div class="card-footer">
+                  <div class="row ">
+                    <div class="col-10 ">
+                      <form class="card-comment-box" role="form">
+                        <textarea id="com" rows="1" class="form-control textarea-autosize"
+                          placeholder="Donner un commentaire..."></textarea>
+                          <a onclick="addcomme()"><i id="addCom" class="fa fa-check"></i></a>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-6 ml-lg-auto">
+              <h3 class="heading h3">
+                {{ infos[0]["descrip"] }}
+              </h3>
+              <p class="lead text-gray mt-4">{{ infos[0]["history"] }}
+              </p>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <section class="grids-1 py-5">
+    <div class="container img-center>
+      <div id="commend" class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="heading heading-5 strong-600">Commentaires</h5>
+                <p id="comArea" class="card-text"></p>
+            </div>
+        </div>
+    </div>
+    </div>
+  </section>
+{% endblock %}
+

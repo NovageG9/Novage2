@@ -67,17 +67,24 @@
                   </span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdown_user_account">
-                  <h6 class="dropdown-header">User menu</h6>
-                  <a class="dropdown-item" href="#">
-                    <i class="fa fa-envelope text-primary"></i> Mon profit
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fa fa-cog text-primary"></i> Likes
-                  </a>
-                  <div class="dropdown-divider" role="presentation"></div>
-                  <a class="dropdown-item" href="login">
+                    {%  if 'logged_in' in session.keys() %}
+                        <h6 class="dropdown-header">User menu</h6>
+                        <a class="dropdown-item" href="#">
+                            <i class="fa fa-address-card text-primary"></i> Mon infos
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fa fa-folder text-primary"></i> Likes
+                        </a>
+                        <div class="dropdown-divider" role="presentation"></div>
+                        <a class="dropdown-item" href="login">
+                            <i class="fa fa-sign-out-alt text-primary"></i>Se déconnecter
+                        </a>
+                    {% else %}
+                        <div class="dropdown-divider" role="presentation"></div>
+                        <a class="dropdown-item" href="login">
                     <i class="fa fa-sign-out-alt text-primary"></i>Se connecter
                   </a>
+                    {% endif %}
                 </div>
               </div>
         </div>
@@ -100,6 +107,7 @@
     </div>
   </header>
   <!-- //header -->
+
 
   {% block content %}
   {%  endblock %}

@@ -7,4 +7,28 @@
 {% block lien %}index.html{% endblock %}
 {% block last_page %}Accueil{% endblock %}
 {% block current_page %}Destinations{% endblock %}
-
+{% block content %}
+    <section class="grids-1 py-5">
+  <div class="grids py-lg-5 py-md-4">
+      <div class="container">
+          <h3 class="hny-title mb-5">Destinations</h3>
+          <div class="row">
+              {% for i in lieu %}
+              <div class="col-lg-4 col-md-4 col-6">
+                  <div class="column">
+                      <a href="detail.html"><img src="static/assets/images/g1.jpg" alt="" class="img-fluid2"></a>
+                      <div class="info">
+                          <h4><a href="detail.html">{{ i["ville"] }}</a></h4>
+                          <p>{{ i["duree"]}}</p>
+                          <div class="dst-btm">
+                            <h6 class="">À partir de  </h6>
+                            <span> €{{ i["Prix"] }}</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+          </div>
+      </div>
+</div></section>
+{% endblock %}
