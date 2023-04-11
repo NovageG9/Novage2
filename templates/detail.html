@@ -16,13 +16,13 @@
                 <div class="card-header py-4">
                   <div class="d-flex align-items-center">
                     <div class="avatar-content">
-                      <h5 class="h6 mb-0">{{ infos[0]["lieu"] }}</h5>
-                      <small class="d-block text-muted">{{ infos[0]["ville"] }}</small>
+                      <h5 class="h6 mb-0">{{ infos[0][0] }}</h5>
+                      <small class="d-block text-muted">{{ infos[0][2] }}</small>
                     </div>
                   </div>
                 </div>
                 <div class="card-image">
-                  <img src="static/assets/images/lieu/Ile_de_france.jpg" class="img-fluid">
+                  <img src="static/assets/images/lieu/c4.jpg" class="img-fluid">
                 </div>
                 <div class="card-body">
                   <div class="row mb-1">
@@ -50,9 +50,9 @@
           </div>
           <div class="col-lg-6 ml-lg-auto">
               <h3 class="heading h3">
-                {{ infos[0]["descrip"] }}
+                {{ infos[0][0] }}
               </h3>
-              <p class="lead text-gray mt-4">{{ infos[0]["history"] }}
+              <p class="lead text-gray mt-4">{{ infos[0][1] }}
               </p>
           </div>
         </div>

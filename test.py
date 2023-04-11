@@ -7,12 +7,12 @@ app.secret_key = 'asdgagerger2dfg224t2'
 
 
 def connection():
-    if not os.path.exists('db/novage_db.sqlite3'):
-        print(f"Le fichier {'db/novage_db.sqlite3'} n'existe pas")
+    if not os.path.exists('db/novage2_db.sqlite3'):
+        print(f"Le fichier {'db/novage2_db.sqlite3'} n'existe pas")
         connection = None
     else:
         try:
-            connection = sqlite3.connect('db/novage_db.sqlite3')
+            connection = sqlite3.connect('db/novage2_db.sqlite3')
             print("Connection to SQLite réussi")
         except OSError as e:
             print(f"The error {e} occured")
@@ -29,6 +29,7 @@ def select_donne(connect, query):
     connect.close()
     return result
 
+
 def execute_query(connect, query):
     cursor = connect.cursor()
     try:
@@ -37,6 +38,7 @@ def execute_query(connect, query):
         print("Error execute query!")
     connect.commit()
     connect.close()
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index_page():
@@ -68,8 +70,11 @@ def destination_page():
                 {"ville": "Bordeau", "duree": "3 Jours, 4 Nuits", "Prix": "1650"}]
         return render_template('service.html', lieu=lieu)
     else:
-        query = '''select * from activite;'''
-        return render_template('service.html')
+        con = connection()
+        query = f'''select idLieu, nomVille, nomLieu from lieu, ville where lieu.idville = ville.idville;'''
+        res = select_donne(con, query)
+        print(res)
+        return render_template('service.html', lieu=res)
 
 
 @app.route('/about')
@@ -101,15 +106,14 @@ def monInfo_page():
         print("adsfasfsadsfafas111111111")
         return redirect(url_for('logout_page'))
 
-@app.route('/detail')
-def detail_page():
-    detail = [{"lieu": "Ile de france", "ville": "Paris, Fr",
-               "descrip": "Une région historique et administrative française. ",
-               "history": "Ancienne « terre des Francs » où bon nombre de châteaux ont été construits pour les rois et les seigneurs,"
-                          "Paris et sa région allie un patrimoine culturel, historique et gastronomique exceptionnel. C'est Paris avec ses quais, ses vieux quartiers, "
-                          "sa beauté célébrée dans le monde entier, ce sont Versailles et son château, les bords de Marne et ses guinguettes, Chantilly et ses courses, "
-                          "la vallée de Chevreuse avec ses forêts et ses abbayes, Provins et sa cité médiévale classée au patrimoine mondial de l'Unesco, la Roche-Guyon....."}]
-    return render_template('detail.html', infos=detail)
+
+@app.route('/detail/<int:lieu_id>')
+def detail_page(lieu_id):
+    con = connection()
+    query = f'''select nomLieu, descLieu, nomVille, idLieu from lieu, ville where lieu.idville = ville.idville and idLieu = {lieu_id};'''
+    res = select_donne(con, query)
+    print(res)
+    return render_template('detail.html', infos=res)
 
 
 @app.route('/politique')
@@ -157,7 +161,7 @@ def like_page():
         con = connection()
         query = f'''select * from liker where idUti in (select idUti from utilisateur where mailUti= "{session['username']}");'''
         list_like = select_donne(con, query)
-        print('like:' , list_like)
+        print('like:', list_like)
         return render_template('like.html', li=list_like)
 
 
@@ -168,6 +172,7 @@ def delete_favorite(favorite_id):
     query = f'''delete from liker where idLieu={favorite_id} and idUti=1;'''
     execute_query(con, query)
     return redirect(url_for('like_page'))
+
 
 @app.route('/inscrit', methods=['GET', 'POST'])
 def inscrit_page():
