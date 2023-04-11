@@ -1,0 +1,72 @@
+{% extends "layout_contenu.html" %}
+{% block title %} Destinations {% endblock %}
+{% block page_active4 %}active{% endblock %}
+{% block page_current4 %}<span class="sr-only">(current)</span>{% endblock %}
+{% block sous_title%}Mon information{% endblock %}
+{% block lien %}index.html{% endblock %}
+{% block last_page %}Accueil{% endblock %}
+{% block current_page %}Mon information{% endblock %}
+{% block bar %}
+<section class="w3l-contact" id="contact">
+  <div class="contact-infubd py-5">
+    <div class="container py-lg-3">
+      <div class="contact-grids row">
+        <div class="col-lg-6 mt-lg-0 mt-5 contact-right">
+          <form method="post" class="signin-form">
+              <table>
+                  <tr>
+                      <td><div class="form-group">
+                            <p>Numéro client</p>
+                            </div>
+                      </td>
+                      <td><div class="form-group">
+                            <p>{{ info[0][0] }}</p>
+                            </div>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td><div class="form-group">
+                            <p>Nom client</p>
+                            </div>
+                      </td>
+                      <td><div class="form-group">
+                            <p><input type="text" name="username" id="username" placeholder="{{ info[0][1] }}" class="contact-input" /></p>
+                            </div>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td><div class="form-group">
+                            <p>Mail client</p>
+                            </div>
+                      </td>
+                      <td><div class="form-group">
+                            <p><input type="email" name="userEmail" id="userEmail" placeholder="{{ info[0][2] }}" class="contact-input" /></p>
+                            </div>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td><div class="form-group">
+                            <p>Nouvelle mot de passe</p>
+                            </div>
+                      </td>
+                      <td><div class="form-group">
+                            <p><input type="password" name="newpwd" id="newpwd" placeholder="mot de passe" class="contact-input" /></p>
+                            </div>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                      <div class="text-right">
+                        <button class="btn btn-style btn-primary">Modifier</button>
+                      </div>
+                      </td>
+                  </tr>
+              </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+

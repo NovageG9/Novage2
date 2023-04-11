@@ -1,0 +1,49 @@
+{% extends "layout_contenu.html" %}
+{% block title %} Mes favoris {% endblock %}
+{% block page_active4 %}active{% endblock %}
+{% block page_current4 %}<span class="sr-only">(current)</span>{% endblock %}
+{% block sous_title%}Mes favoris{% endblock %}
+{% block lien %}index.html{% endblock %}
+{% block last_page %}Accueil{% endblock %}
+{% block current_page %}Mes favoris{% endblock %}
+{% block bar %}
+<section class="w3l-contact" id="contact">
+  <div class="contact-infubd py-5">
+    <div class="container py-lg-3">
+      <div class="contact-grids row">
+        <div class="col-lg-6 mt-lg-0 mt-5 contact-right">
+    <ul>
+        {% for favorite in li %}
+            <li>{{ favorite[1] }}
+                <form class="signin-form" action="/delete/{{ favorite[1] }}" method="post" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Êtes-vous sûr(e) de vouloir supprimer ce favori ?')">supprimer</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        // 使用 JavaScript 获取表单，并设置其提交方式为 DELETE
+        const deleteForms = document.querySelectorAll('.delete-form');
+        for (const form of deleteForms) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const confirmDelete = confirm('Are you sure you want to delete this favorite?');
+                if (confirmDelete) {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('DELETE', form.action);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 204) {
+                            // 删除成功后刷新页面
+                            location.reload();
+                        }
+                    };
+                    xhr.send();
+                }
+            });
+        }
+    </script>
+    </div>
+</section>
+{% endblock %}
+

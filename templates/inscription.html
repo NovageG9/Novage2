@@ -18,18 +18,18 @@
                 <span class="btn-inner--icon"><i class="fas fa-arrow-left"></i></span>
               </button>
               <span class="clearfix"></span>
-              <img src="assets/images/logo2.png" style="width: 50px;">
+              <img src="static/assets/images/logo2.png" style="width: 50px;">
               <h4 class="heading h3 text-white pt-3 pb-5">Bienvenue,<br>
                 Créer votre compte </h4>
-              <form class="form-primary" action="confirmation_ins.html">
+              <form class="form-primary" method="post">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="input_nom" placeholder="Nom" required>
+                  <input type="text" class="form-control" id="input_nom" name="input_nom" placeholder="Nom" required>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" id="input_email" placeholder="Email" required>
+                  <input type="email" class="form-control" id="input_email" name="input_email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control" id="input_password" placeholder="Password" required>
+                  <input type="password" class="form-control" id="input_password" name="input_password" placeholder="Password" required>
                 </div>
                 <div class="text-right mt-4"><a href="login" class="text-white ptp_font">J'ai déjà un compte</a></div>
                 <button type="submit"  class="btn btn-style2 btn-block btn-lg bg-white mt-4">S'INSCRIRE</button>
