@@ -19,24 +19,14 @@
               <h3>NOVAGE<br>Any time, any place</h3>
               <h6 class="mb-3">Découvrez votre prochaine aventure</h6>
               <div class="flex-wrap search-wthree-field mt-md-5 mt-4">
-                <form action="destination" class="booking-form">
+                <form action="search" method="post" class="booking-form">
                   <div class="row book-form">
                     <div class="form-input col-md-4 mt-md-0 mt-3">
                       <select name="selectpicker" class="selectpicker">
                         <option value="">Destination</option>
-                        <option value="01">Auvergne-Rhône-Alpes</option>
-                        <option value="02">Bourgogne-Franche-Comté</option>
-                        <option value="03">Bretagne</option>
-                        <option value="04">Centre-Val de Loire</option>
-                        <option value="05">Corse</option>
-                        <option value="06">Grand Est</option>
-                        <option value="07">Haute-de-France</option>
-                        <option value="08">Île-de-France</option>
-                        <option value="09">Normandie</option>
-                        <option value="10">Nouvelle-Aquitaine</option>
-                        <option value="11">Occitanie</option>
-                        <option value="12">Pays de la Loire</option>
-                        <option value="13">Provence-Alpes-Côte d'Azur</option>
+                          {% for re in region %}
+                        <option value="{{ re[0] }}">{{ re[1] }}</option>
+                        {% endfor %}
                       </select>
                     </div>
                     <div class="bottom-btn col-md-4 mt-md-0 mt-3">
@@ -129,7 +119,6 @@
                     <h4>3Jours, 4 Nuits</h4>
                     <p>À partir de 1720€ </p>
                   </div>
-
                 </figcaption>
               </figure>
             </a>

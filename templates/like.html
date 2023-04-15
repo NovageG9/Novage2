@@ -14,8 +14,8 @@
         <div class="col-lg-6 mt-lg-0 mt-5 contact-right">
     <ul>
         {% for favorite in li %}
-            <li>{{ favorite[1] }}
-                <form class="signin-form" action="/delete/{{ favorite[1] }}" method="post" style="display:inline;">
+            <li>{{ favorite[0] }}{{ favorite[1] }}{{ favorite[2] }}{{ favorite[3] }}{{ favorite[4] }}{{ favorite[5] }}
+                <form class="signin-form" action="/delete/{{ favorite[0] }}" method="post" style="display:inline;">
                     <button type="submit" onclick="return confirm('Êtes-vous sûr(e) de vouloir supprimer ce favori ?')">supprimer</button>
                 </form>
             </li>

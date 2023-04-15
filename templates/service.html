@@ -13,16 +13,16 @@
       <div class="container">
           <h3 class="hny-title mb-5">Destinations</h3>
           <div class="row">
-              {% for i in lieu %}
+              {% for i in params %}
               <div class="col-lg-4 col-md-4 col-6">
                   <div class="column">
-                      <a href="detail/{{ i[0] }}"><img src="static/assets/images/g1.jpg" alt="" class="img-fluid2"></a>
+                      <a href="detail/{{ i[0][0] }}"><img src="{{ url_for('static', filename=i[1]) }}" alt="" class="img-fluid"></a>
                       <div class="info">
-                          <h4><a href="detail/{{ i[0] }}">{{ i[2] }}</a></h4>
-                          <p>{{ i[1]}}</p>
+                          <h4><a href="detail/{{ i[0][0] }}">{{ i[0][2] }}</a></h4>
+                          <p>{{ i[0][1]}}</p>
                           <div class="dst-btm">
                             <h6 class="">À partir de  </h6>
-                            <span> €{{ i[0] }}</span>
+                            <span> €{{ i[0][4] }}</span>
                           </div>
                       </div>
                   </div>

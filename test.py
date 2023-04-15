@@ -7,12 +7,12 @@ app.secret_key = 'asdgagerger2dfg224t2'
 
 
 def connection():
-    if not os.path.exists('db/novage2_db.sqlite3'):
-        print(f"Le fichier {'db/novage2_db.sqlite3'} n'existe pas")
+    if not os.path.exists('db/novage_db.sqlite3'):
+        print(f"Le fichier {'db/novage_db.sqlite3'} n'existe pas")
         connection = None
     else:
         try:
-            connection = sqlite3.connect('db/novage2_db.sqlite3')
+            connection = sqlite3.connect('db/novage_db.sqlite3')
             print("Connection to SQLite réussi")
         except OSError as e:
             print(f"The error {e} occured")
@@ -45,36 +45,44 @@ def index_page():
     if 'logged_in' in session.keys() and session['logged_in']:
         return render_template('index.html')
     else:
+        query = f'''select idRegion, nomRegion from Region;'''
+        list_region = select_donne(connection(), query)
+        print(list_region)
         lieu = [{"ville": "Paris", "duree": "3 Jours, 4 Nuits", "Prix": "1650"},
                 {"ville": "Lille", "duree": "3 Jours, 4 Nuits", "Prix": "1650"},
                 {"ville": "Nice", "duree": "3 Jours, 4 Nuits", "Prix": "1650"},
                 {"ville": "Bordeau", "duree": "3 Jours, 4 Nuits", "Prix": "1650"}]
-        return render_template('index.html', lieu=lieu)
+        return render_template('index.html', lieu=lieu, region=list_region)
 
 
 @app.route('/destination')
 def destination_page():
     con = connection()
-    if 'logged_in' in session.keys() and session['logged_in']:
-        lieu = [{"ville": "Paris", "duree": "3 Jours, 4 Nuits", "Prix": "1650"},
-                {"ville": "Lille", "duree": "3 Jours, 4 Nuits", "Prix": "1650"},
-                {"ville": "Nice", "duree": "3 Jours, 4 Nuits", "Prix": "1650"},
-                {"ville": "Bordeau", "duree": "3 Jours, 4 Nuits", "Prix": "1650"},
-                {"ville": "Paris", "duree": "3 Jours, 4 Nuits", "Prix": "1650"},
-                {"ville": "Lille", "duree": "3 Jours, 4 Nuits", "Prix": "1650"},
-                {"ville": "Nice", "duree": "3 Jours, 4 Nuits", "Prix": "1650"},
-                {"ville": "Bordeau", "duree": "3 Jours, 4 Nuits", "Prix": "1650"},
-                {"ville": "Paris", "duree": "3 Jours, 4 Nuits", "Prix": "1650"},
-                {"ville": "Lille", "duree": "3 Jours, 4 Nuits", "Prix": "1650"},
-                {"ville": "Nice", "duree": "3 Jours, 4 Nuits", "Prix": "1650"},
-                {"ville": "Bordeau", "duree": "3 Jours, 4 Nuits", "Prix": "1650"}]
-        return render_template('service.html', lieu=lieu)
-    else:
-        con = connection()
-        query = f'''select idLieu, nomVille, nomLieu from lieu, ville where lieu.idville = ville.idville;'''
-        res = select_donne(con, query)
-        print(res)
-        return render_template('service.html', lieu=res)
+    query = f'''select idLieu, nomVille, nomLieu, dureeConseillee, prix from lieu, ville where lieu.idville = ville.idville;'''
+    res = select_donne(con, query)
+    print(res)
+    path = list()
+    for i in res:
+        url_img = f'assets/images/lieu/{i[0]}.jpg'
+        path.append(url_img)
+    return render_template('service.html', params=zip(res, path))
+
+
+@app.route('/search', methods=['POST'])
+def search_page():
+    if request.form.get('selectpicker') is not None:
+        region = request.form.get('selectpicker')
+    print(region)
+    con = connection()
+    query = f'''select distinct idLieu, nomVille, nomLieu, dureeConseillee, prix from lieu, ville, region where lieu.idville = ville.idville and ville.idRegion={region};'''
+    res = select_donne(con, query)
+    print(res)
+    path = list()
+    for i in res:
+        url_img = f'assets/images/lieu/{i[0]}.jpg'
+        path.append(url_img)
+    print(path)
+    return render_template('service.html',  params=zip(res, path))
 
 
 @app.route('/about')
@@ -113,8 +121,14 @@ def detail_page(lieu_id):
     query = f'''select nomLieu, descLieu, nomVille, idLieu from lieu, ville where lieu.idville = ville.idville and idLieu = {lieu_id};'''
     res = select_donne(con, query)
     print(res)
-    return render_template('detail.html', infos=res)
+    path = f'assets/images/lieu/{lieu_id}.jpg'
+    print(path)
+    return render_template('detail.html', infos=res, path=path)
 
+#
+# @app.route('/add_favo/<int:lieu_id>')
+# def add_favo(lieu_id):
+#
 
 @app.route('/politique')
 def politique_page():
@@ -134,13 +148,15 @@ def login_page():
 
         print(username, password)
         con = connection()
-        query = f'''select mailUti, mdpUti from utilisateur where mailUti="{username}" and mdpUti={password};'''
+        query = f'''select idUti, mailUti, mdpUti from utilisateur where mailUti="{username}" and mdpUti={password};'''
         print(query)
         user_bon = select_donne(con, query)
-        if user_bon is not None:
+        print(user_bon)
+        if len(user_bon) > 0:
             print("user_bon")
             session['logged_in'] = True
             session['username'] = username
+            session['userid'] = user_bon[0][0]
             return redirect(url_for('index_page'))
         else:
             # 显示错误消息
@@ -155,11 +171,17 @@ def logout_page():
     return redirect(url_for('index_page'))
 
 
-@app.route('/like', methods=['GET', 'POST'])
-def like_page():
+@app.route('/favos', methods=['GET', 'POST'])
+def favos_page():
     if request.method == 'GET':
         con = connection()
-        query = f'''select * from liker where idUti in (select idUti from utilisateur where mailUti= "{session['username']}");'''
+        query = f'''select  idLieu, nomLieu, nomVille, nomRegion, dureeConseillee, prix from lieu, ville, region 
+        where lieu.idville = ville.idville 
+        and ville.idRegion=Region.idRegion 
+        and  idLieu in 
+        (select idLieu 
+        from ajouter 
+        where idUti = {session['userid']});'''
         list_like = select_donne(con, query)
         print('like:', list_like)
         return render_template('like.html', li=list_like)
@@ -169,9 +191,9 @@ def like_page():
 def delete_favorite(favorite_id):
     print('favorite: ', favorite_id)
     con = connection()
-    query = f'''delete from liker where idLieu={favorite_id} and idUti=1;'''
+    query = f'''delete from ajouter where idLieu={favorite_id} and idUti={session['userid']};'''
     execute_query(con, query)
-    return redirect(url_for('like_page'))
+    return redirect(url_for('favos_page'))
 
 
 @app.route('/inscrit', methods=['GET', 'POST'])
