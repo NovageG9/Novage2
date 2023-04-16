@@ -5,7 +5,7 @@ Web dynamique
 Groupe 9
 
 
-<img src="/assets/images/logo2.png" alt="Your logo" title="Your logo"  />
+<img src="assets/images/logo2.png" alt="Your logo" title="Your logo"  />
 <h1>Le nom du projet : NOVAGE</h1>
 
 
