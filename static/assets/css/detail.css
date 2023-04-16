@@ -342,7 +342,7 @@ h6 {
 
 .card-icon-actions>.love:hover,
 .card-icon-actions>.love.active {
-    color: #f03
+    color: red;
 }
 
 .card-icon-actions>.like:hover,

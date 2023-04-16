@@ -12,15 +12,41 @@
     <div class="container py-lg-3">
       <div class="contact-grids row">
         <div class="col-lg-6 mt-lg-0 mt-5 contact-right">
-    <ul>
-        {% for favorite in li %}
-            <li>{{ favorite[0] }}{{ favorite[1] }}{{ favorite[2] }}{{ favorite[3] }}{{ favorite[4] }}{{ favorite[5] }}
-                <form class="signin-form" action="/delete/{{ favorite[0] }}" method="post" style="display:inline;">
-                    <button type="submit" onclick="return confirm('Êtes-vous sûr(e) de vouloir supprimer ce favori ?')">supprimer</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
+
+    <table class="table table-hover table-cards align-items-center">
+    <thead>
+        <tr>
+            <th scope="col">Nom Lieu</th>
+            <th scope="col">Ville</th>
+            <th scope="col">Region</th>
+            <th scope="col">Durée Conseillée</th>
+            <th scope="col">Prix</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for favorite in li %}
+        <tr class="bg-white">
+            <th scope="row">
+                <div class="media align-items-center">
+                    <img src="static/assets/images/lieu/{{ favorite[0] }}.jpg" style="width: 60px" class="avatar avatar-lg mr-3">
+                    <div class="media-body">
+                        <h6 class="h5 font-weight-normal mb-0">{{ favorite[1] }}</h6>
+                    </div>
+                </div>
+            </th>
+            <td>  <h6 class="h5 font-weight-normal mb-0">{{ favorite[2] }}</h6></td>
+            <td>  <h6 class="h5 font-weight-normal mb-0">{{ favorite[3] }}</h6></td>
+            <td>  <h6 class="h5 font-weight-normal mb-0">{{ favorite[4] }}</h6></td>
+            <td>  <h6 class="h5 font-weight-normal mb-0">{{ favorite[5] }} €</h6></td>
+            <td><form class="signin-form" action="/delete/{{ favorite[0] }}" method="post" style="display:inline;">
+                <input type="submit" value="Supprimer" onclick="return confirm('Êtes-vous sûr(e) de vouloir supprimer ce favori ?')" class="btn btn-primary" ><i class="fa-thin fa-trash"></i></input>
+                </form></td>
+        </tr>
+        <tr class="table-divider"></tr>
+    {%  endfor %}
+    </tbody>
+</table>
 
     <script>
         // 使用 JavaScript 获取表单，并设置其提交方式为 DELETE

@@ -54,20 +54,20 @@
       </div>
       <div class="row bottom-ab-grids">
         <!--/row-grids-->
-          {% for i in lieu %}
+          {% for i in params %}
             <div class="col-lg-6 subject-card mt-4">
           <div class="subject-card-header p-4">
-            <a href="detail.html" class="card_title p-lg-4d-block">
+            <a href="{{ url_for('detail_page', lieu_id=i[0][0]) }}" class="card_title p-lg-4d-block">
               <div class="row align-items-center">
                 <div class="col-sm-5 subject-img">
-                  <img src="static/assets/images/g1.jpg" class="img-fluid" alt="">
+                  <img src="{{ url_for('static', filename=i[1]) }}" class="img-fluid" alt="">
                 </div>
                 <div class="col-sm-7 subject-content mt-sm-0 mt-4">
-                  <h4>{{ i["ville"] }}</h4>
-                  <p>{{ i["duree"]}}</p>
+                  <h4>{{ i[0][2] }}</h4>
+                  <p>{{ i[0][3]}} Jours</p>
                   <div class="dst-btm">
                     <h6 class=""> À partir de  </h6>
-                    <span> €{{ i["Prix"] }}</span>
+                    <span> €{{ i[0][4] }}</span>
                   </div>
                 </div>
               </div>
@@ -111,13 +111,13 @@
       <div class="ban-content-inf row">
         <div class="maghny-gd-1 col-lg-6">
           <div class="maghny-grid">
-            <a href="detail.html">
+            <a href="{{ url_for('detail_page', lieu_id=p3[0][0]) }}">
               <figure class="effect-lily border-radius  m-0">
-                <img class="img-fluid" src="static/assets/images/g10.jpg"  />
+                <img class="img-fluid" src="{{ url_for('static', filename=p3[1]) }}"  />
                 <figcaption>
-                  <div>
-                    <h4>3Jours, 4 Nuits</h4>
-                    <p>À partir de 1720€ </p>
+                  <div><h4>{{ p3[0][2]}}Jours</h4>
+                    <h4>{{ p3[0][3]}}Jours</h4>
+                    <p>À partir de {{ p3[0][4]}}€ </p>
                   </div>
                 </figcaption>
               </figure>
@@ -126,68 +126,24 @@
         </div>
         <div class="maghny-gd-1 col-lg-6 mt-lg-0 mt-4">
           <div class="row">
-            <div class="maghny-gd-1 col-6">
+              {% for i in p2 %}
+            <div class="maghny-gd-1 col-6 mt-2">
               <div class="maghny-grid">
-                <a href="detail.html">
+                <a href="{{ url_for('detail_page', lieu_id=i[0][0]) }}">
                 <figure class="effect-lily border-radius">
-                  <img class="img-fluid" src="static/assets/images/lieu/marseile.jpg"  />
+                  <img class="img-fluid" src="{{ url_for('static', filename=i[1]) }}"  />
                   <figcaption>
                     <div>
-                      <h4>3Jours, 4 Nuits</h4>
-                      <p>À partir de 1720€ </p>
+                        <h4>{{ i[0][2]}} Jours</h4>
+                      <h4>{{ i[0][3]}} Jours</h4>
+                      <p>À partir de {{ i[0][4] }} € </p>
                     </div>
                   </figcaption>
                 </figure>
               </a>
               </div>
             </div>
-            <div class="maghny-gd-1 col-6">
-              <div class="maghny-grid">
-                <a href="detail.html">
-                <figure class="effect-lily border-radius">
-                  <img class="img-fluid" src="static/assets/images/lieu/lille.jpg"  />
-                  <figcaption>
-                    <div>
-                      <h4>3Jours, 4 Nuits</h4>
-                      <p>À partir de 1000€</p>
-                    </div>
-
-                  </figcaption>
-                </figure>
-              </a>
-              </div>
-            </div>
-            <div class="maghny-gd-1 col-6 mt-4">
-              <div class="maghny-grid">
-                <a href="detail.html">
-                <figure class="effect-lily border-radius">
-                  <img class="img-fluid" src="static/assets/images/lieu/nice.jpg" />
-                  <figcaption>
-                    <div>
-                      <h4>3Jours, 4 Nuits</h4>
-                      <p>À partir de 1600€</p>
-                    </div>
-
-                  </figcaption>
-                </figure>
-              </a>
-              </div>
-            </div>
-            <div class="maghny-gd-1 col-6 mt-4">
-              <div class="maghny-grid">
-                <a href="detail.html">
-                <figure class="effect-lily border-radius">
-                  <img class="img-fluid" src="static/assets/images/lieu/marseile.jpg" alt="" />
-                  <figcaption>
-                    <div>
-                      <h4>3Jours, 4 Nuits</h4>
-                      <p>À partir de 1220€ </p>
-                    </div>
-                  </figcaption>
-                </figure>
-              </a>
-              </div>
-            </div>
+        {% endfor %}
           </div>
         </div>
       </div>

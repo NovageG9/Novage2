@@ -31,7 +31,7 @@
   <header id="site-header" class="fixed-top">
     <div class="container">
       <nav class="navbar navbar-expand-lg stroke">
-      <a class="navbar-brand" href="#index.html">
+      <a class="navbar-brand" href="{{ url_for('index_page') }}">
           <img src="{{ url_for('static',filename='/assets/images/logo2.png')}}" alt="Your logo" title="Your logo" style="height:70px;" />
       </a>
         <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
@@ -48,13 +48,13 @@
               <a class="nav-link" href="/">Accueil {%block page_current1 %}{% endblock %}</a>
             </li>
             <li class="nav-item {% block page_active2 %}{% endblock %}" >
-              <a class="nav-link" href="destination">Destinations {%block page_current2 %}{% endblock %}</a>
+              <a class="nav-link" href="{{ url_for('destination_page') }}">Destinations {%block page_current2 %}{% endblock %}</a>
             </li>
             <li class="nav-item {% block page_active3 %}{% endblock %}">
-              <a class="nav-link" href="about">Qui sommes-nous {%block page_current3 %}{% endblock %}</a>
+              <a class="nav-link" href="{{ url_for('about_page') }}">Qui sommes-nous {%block page_current3 %}{% endblock %}</a>
             </li>
             <li class="nav-item {% block page_active4 %}{% endblock %}">
-              <a class="nav-link" href="contact">Contact {%block page_current4 %}{% endblock %}</a>
+              <a class="nav-link" href="{{ url_for('contact_page') }}">Contact {%block page_current4 %}{% endblock %}</a>
             </li>
           </ul>
         </div>
@@ -69,19 +69,19 @@
                 <div class="dropdown-menu" aria-labelledby="dropdown_user_account">
                     {%  if 'logged_in' in session.keys() and 'username' in session.keys() %}
                         <h6 class="dropdown-header">User menu</h6>
-                        <a class="dropdown-item" href="info">
+                        <a class="dropdown-item" href="{{ url_for('monInfo_page') }}">
                             <i class="fa fa-address-card text-primary"></i> Mon infos
                         </a>
-                        <a class="dropdown-item" href="favos">
+                        <a class="dropdown-item" href="{{ url_for('favos_page') }}">
                             <i class="fa fa-folder text-primary"></i> Mon favoris
                         </a>
                         <div class="dropdown-divider" role="presentation"></div>
-                        <a class="dropdown-item" href="logout">
+                        <a class="dropdown-item" href="{{ url_for('logout_page') }}">
                             <i class="fa fa-sign-out-alt text-primary"></i>Se déconnecter
                         </a>
                     {% else %}
                         <div class="dropdown-divider" role="presentation"></div>
-                        <a class="dropdown-item" href="login">
+                        <a class="dropdown-item" href="{{ url_for('login_page') }}">
                     <i class="fa fa-sign-out-alt text-primary"></i>Se connecter
                   </a>
                     {% endif %}
@@ -124,10 +124,10 @@
                   <br>
                   <ul class="footer-gd-16">
                     <li><a href="/">Accueil</a></li>
-                    <li><a href="about">A propos de nous</a></li>
-                    <li><a href="destination">Services</a></li>
-                    <li><a href="contact">Contactez-nous</a></li>
-                    <li><a href="politique">Politique de confidentialité</a></li>
+                    <li><a href="{{ url_for('about_page') }}">A propos de nous</a></li>
+                    <li><a href="{{ url_for('destination_page') }}">Services</a></li>
+                    <li><a href="{{ url_for('about_page') }}">Contactez-nous</a></li>
+                    <li><a href="{{ url_for('politique_page') }}">Politique de confidentialité</a></li>
                   </ul>
                 </div>
 

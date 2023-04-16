@@ -16,9 +16,9 @@
               {% for i in params %}
               <div class="col-lg-4 col-md-4 col-6">
                   <div class="column">
-                      <a href="detail/{{ i[0][0] }}"><img src="{{ url_for('static', filename=i[1]) }}" alt="" class="img-fluid"></a>
+                      <a href="{{ url_for('detail_page', lieu_id=i[0][0]) }}"><img src="{{ url_for('static', filename=i[1]) }}" alt="" class="img-fluid"></a>
                       <div class="info">
-                          <h4><a href="detail/{{ i[0][0] }}">{{ i[0][2] }}</a></h4>
+                          <h4><a href="{{ url_for('detail_page', lieu_id=i[0][0]) }}">{{ i[0][2] }}</a></h4>
                           <p>{{ i[0][1]}}</p>
                           <div class="dst-btm">
                             <h6 class="">À partir de  </h6>

@@ -25,23 +25,35 @@
                   <img src="{{ url_for('static', filename=path) }}" class="img-fluid">
                 </div>
                 <div class="card-body">
-                  <div class="row mb-1">
-                    <div class="col">
-                      <div class="card-icon-actions card-icon-actions-lg">
-                        <a onclick="like()" class="love active"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                          &nbsp&nbsp<a onclick="addFavo()"><i class="fa fa-bookmark"></i></a>
-                      </div>
+                    <div class="btn-group btn-action-label" role="group" aria-label="Like">
+                        <button type="button" class="btn btn-sm btn-secondary btn-action"><a href="{{ url_for('add_like', lieu_id=infos[0][3]) }}"><i class="fa fa-thumbs-up"></i><span>Like</span></a></button>
+                        <p class="btn btn-sm btn-outline-secondary btn-label">{{ nb }}</p>
                     </div>
-                  </div>
-                  <h6 class="heading h6 mb-3"><span id="like">0 likes</span></h6>
+                    <div class="btn-group btn-action-label" role="group" aria-label="Like">
+                        <a href="{{ url_for('addfavos_page', lieu_id=infos[0][3]) }}" class="btn btn-sm btn-outline-danger btn-label"><i class="fa fa-heart"></i></a>
+                    </div>
                   </div>
                 <div class="card-footer">
                   <div class="row ">
                     <div class="col-10 ">
-                      <form class="card-comment-box" role="form">
-                        <textarea id="com" rows="1" class="form-control textarea-autosize"
-                          placeholder="Donner un commentaire..."></textarea>
-                          <a onclick="addcomme()"><i id="addCom" class="fa fa-check"></i></a>
+                      <form method="post" action="{{ url_for('add_comm', lieu_id=infos[0][3]) }}" class="card-comment-box" role="form">
+                            <table>
+                                <tr >
+                                    <td ><textarea id="com" name="com" cols="30" rows="1" class="form-control textarea-autosize"
+                          placeholder="Donner un commentaire..."></textarea></td>
+                                    <td>&nbsp;</td>
+                                    <td >
+                                        <select name="note" class="btn btn-outline-primary dropdown-toggle" type="button" ><i class="fa-solid fa-list-radio"></i></option>
+                                            <option value="1">Mauvais</option>
+                                            <option value="2">Passable</option>
+                                            <option value="3">Acceptable</option>
+                                            <option value="4">Agréable</option>
+                                            <option value="5">Superbe</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                          <button type="submit" class="btn btn-primary"><i id="addCom" class="fa fa-check"></i> submit</button>
                       </form>
                     </div>
                   </div>
@@ -54,21 +66,40 @@
               </h3>
               <p class="lead text-gray mt-4">{{ infos[0][1] }}
               </p>
+
           </div>
         </div>
       </div>
   </div>
 
   <section class="grids-1 py-5">
-    <div class="container img-center>
-      <div id="commend" class="col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="heading heading-5 strong-600">Commentaires</h5>
-                <p id="comArea" class="card-text"></p>
-            </div>
-        </div>
-    </div>
+
+    <div class="container img-center">
+    <table class="table table-hover table-cards align-items-center">
+    <thead>
+        <tr>
+            <th scope="col">Utilisateur</th>
+            <th scope="col">Commentaires</th>
+            <th scope="col">Note</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for com in commentaires %}
+        <tr class="bg-white">
+            <th scope="row">
+                <div class="media align-items-center">
+                    <div class="media-body">
+                        <h6 class="h5 font-weight-normal mb-0">{{ com[0] }}</h6>
+                    </div>
+                </div>
+            </th>
+            <td> <div style="width: 90%"> <p name="{{ com[0] }}"  class="card-text">{{ com[2] }}</p> </div> </td>
+            <td>{{ com[1] }}</td>
+        </tr>
+        <tr class="table-divider"></tr>
+    {%  endfor %}
+    </tbody>
+</table>
     </div>
   </section>
 {% endblock %}
