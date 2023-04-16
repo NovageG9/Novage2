@@ -1,0 +1,62 @@
+﻿idVille;Ville;region;id_region
+1;Ajaccio;Corse;8
+2;Albi;Occitanie;17
+3;Amiens;Picardie;21
+4;Angers;Pays de la Loire;20
+5;Antony;Île-de-France;12
+6;Bastia;Corse;8
+7;Beauvais;Picardie;21
+8;Besançon;Franche-Comté;9
+9;Bougon;Aquitaine;2
+10;Bouillante;Guadeloupe;10
+11;Bourges;Centre;6
+12;Brest;Bretagne;5
+13;Caen;Normandie;19
+14;Calais;Nord-Pas-de-Calais;18
+15;Calvi;Corse;8
+16;Cannes;Provence-Alpes-Côte d'Azur;23
+17;Chassenon;Aquitaine;2
+18;Colmar;Alsace;1
+19;Dijon;Bourgogne-Franche-Comté;4
+20;Domme;Aquitaine;2
+21;Évran;Bretagne;5
+22;Gosier;Guadeloupe;10
+23;Guingamp;Bretagne;5
+24;Havre;Normandie;19
+25;Kourou;Guyane;11
+26;La Rochelle;Poitou-Charentes;22
+27;Lantan;Centre;6
+28;Lille;Nord-Pas-de-Calais;18
+29;Limoges;Limousin;14
+30;Lorrain;Martinique;16
+31;Lyon;Auvergne-Rhône-Alpes;3
+32;Mâcon;Bourgogne-Franche-Comté;4
+33;Mans;Pays de la Loire;20
+34;Marin;Martinique;16
+35;Metz;Lorraine;15
+36;Meudon;Île-de-France;12
+37;Montbéliard;Franche-Comté;9
+38;Moule;Guadeloupe;10
+39;Nancy;Lorraine;15
+40;Nantes;Pays de la Loire;20
+41;Narbonne;Languedoc-Roussillon;13
+42;Nevers;Bourgogne-Franche-Comté;4
+43;Nice;Provence-Alpes-Côte d'Azur;23
+44;Oizon;Centre;6
+45;Paris 20e Arrondissement;Île-de-France;12
+46;Poitiers;Poitou-Charentes;22
+47;Port;Réunion;24
+48;Possession;Réunion;24
+49;Reims;Champagne-Ardenne;7
+50;Remire-Montjoly;Guyane;11
+51;Robert;Martinique;16
+52;Rouen;Normandie;19
+53;Saint-Junien;Limousin;14
+54;Saint-Laurent-Du-Maroni;Guyane;11
+55;Sète;Languedoc-Roussillon;13
+56;Strasbourg;Alsace;1
+57;Tampon;Réunion;24
+58;Toulouse;Occitanie;17
+59;Troyes;Champagne-Ardenne;7
+60;Valence;Auvergne-Rhône-Alpes;3
+61;Vienne;Auvergne-Rhône-Alpes;3
