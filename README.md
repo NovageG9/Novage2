@@ -24,7 +24,7 @@ Novage se  soucie d’offrir un service de qualité, des relations de confiance 
 
 Le lien ver le dossier Google Drive<BR>
 <a href="https://docs.google.com/document/d/1yaC2_GxFr_GqfbpzW52bTUE6nbzf5xGNFtNh3AwWcWk/edit">Projet intégratif PMP</a><BR>
-<a href="https://docs.google.com/presentation/d/1v5jUCV6jYN82gGwspAWEhQjGHpqWLswcL1h73yc1RMg/edit#slide=id.g1b9369e2784_2_82">Présentation Site web</a><BR>
+
 <BR>
 
 <H2>Related Efforts</H2>
