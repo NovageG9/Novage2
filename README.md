@@ -60,7 +60,7 @@ Afin de rendre le site dynamique, nous comptons utiliser MySQL pour stocker les 
 
 Scrum Master: Xiaoyun Tang<BR>
 Product Owner: Anne Ndjeng<BR>
-Les membres: Britney Rangith, Yinchen Wang et Samir Bouridj<BR>
+Les membres: Britney Rangith, Yinchen Wang<BR>
 
 <H2>License</H2>
 <BR>
