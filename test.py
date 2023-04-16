@@ -1,10 +1,14 @@
 import os
-from flask import Flask, render_template, request, session, url_for, redirect
+from flask import Flask, render_template, request, session, url_for, redirect, jsonify
 import sqlite3
+import openai
 
 app = Flask(__name__)
 app.secret_key = 'asdgagerger2dfg224t2'
+openai.api_key = "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"
 
+# 定义 ChatGPT 的初始对话状态
+conversation = []
 
 def connection():
     if not os.path.exists('db/novage_db.sqlite3'):
@@ -152,7 +156,7 @@ def detail_page(lieu_id):
         else:
             like_flag = False
 
-    query_commentaire = f'''select idCo, note, descCo from commentaire where idLieu= {lieu_id};'''
+    query_commentaire = f'''select pseudo, note, descCo from commentaire, utilisateur where  utilisateur.idUti = commentaire.idUti and idLieu={lieu_id};'''
     commentaires = select_donne(connection(), query_commentaire)
     path = f'assets/images/lieu/{lieu_id}.jpg'
     print("nubmer", nb_like)
@@ -290,6 +294,35 @@ def inscrit_page():
         execute_query(connection(), query1)
         return redirect(url_for('login_page'))
 
+
+@app.route('/chat')
+def chat_page():
+    return render_template('chat.html')
+
+@app.route('/chat', methods=['POST'])
+def chat():
+    global conversation
+
+    # 接收用户输入的消息
+    user_input = request.form['input']
+
+    # 将用户输入加入对话状态
+    conversation.append({'role': 'user', 'content': user_input})
+
+    # 调用 GPT-3 API 进行生成回答
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=conversation
+    )
+
+    # 获取生成的回答
+    answer = response.choices[0].message.content.strip()
+
+    # 将生成的回答加入对话状态
+    conversation.append({'role': 'assistant', 'content': answer})
+
+    # 将生成的回答返回给用户
+    return jsonify({'answer': answer})
 
 if __name__ == "__main__":
     app.run()

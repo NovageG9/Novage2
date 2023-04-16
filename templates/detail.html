@@ -1,9 +1,9 @@
 {% extends "layout_contenu.html" %}
 {% block title %} Destinations {% endblock %}
-{% block page_active4 %}active{% endblock %}
-{% block page_current4 %}<span class="sr-only">(current)</span>{% endblock %}
+{% block page_active2 %}active{% endblock %}
+{% block page_current2 %}<span class="sr-only">(current)</span>{% endblock %}
 {% block sous_title%}Détail{% endblock %}
-{% block lien %}service.html{% endblock %}
+{% block lien %}{{ url_for('destination_page') }}{% endblock %}
 {% block last_page %}Destinations{% endblock %}
 {% block current_page %}Détail{% endblock %}
 {% block bar %}

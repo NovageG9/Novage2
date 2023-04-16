@@ -56,6 +56,9 @@
             <li class="nav-item {% block page_active4 %}{% endblock %}">
               <a class="nav-link" href="{{ url_for('contact_page') }}">Contact {%block page_current4 %}{% endblock %}</a>
             </li>
+          <li class="nav-item {% block page_active5 %}{% endblock %}">
+              <a class="nav-link" href="{{ url_for('chat_page') }}">Chat online {%block page_current5 %}{% endblock %}</a>
+            </li>
           </ul>
         </div>
         <div class="d-lg-block mobile-position1">
@@ -82,8 +85,8 @@
                     {% else %}
                         <div class="dropdown-divider" role="presentation"></div>
                         <a class="dropdown-item" href="{{ url_for('login_page') }}">
-                    <i class="fa fa-sign-out-alt text-primary"></i>Se connecter
-                  </a>
+                        <i class="fa fa-sign-out-alt text-primary"></i>Se connecter
+                        </a>
                     {% endif %}
                 </div>
               </div>
@@ -207,14 +210,14 @@
 
 
   <!-- Template JavaScript -->
-  <script src="static/assets/js/jquery-3.3.1.min.js"></script>
-  <script src="static/assets/js/theme-change.js"></script>
+  <script src="{{ url_for('static',filename='/assets/js/jquery-3.3.1.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='/assets/js/theme-change.js')}}"></script>
   <!--/slider-js-->
-  <script src="static/assets/js/jquery.min.js"></script>
-  <script src="static/assets/js/modernizr-2.6.2.min.js"></script>
-  <script src="static/assets/js/jquery.zoomslider.min.js"></script>
+  <script src="{{ url_for('static',filename='/assets/js/jquery.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='/assets/js/modernizr-2.6.2.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='/assets/js/jquery.zoomslider.min.js')}}"></script>
   <!--//slider-js-->
-  <script src="static/assets/js/owl.carousel.js"></script>
+  <script src="{{ url_for('static',filename='/assets/js/owl.carousel.js')}}"></script>
   <!-- script for tesimonials carousel slider -->
   <script>
     $(document).ready(function () {
