@@ -3,7 +3,7 @@
 {% block page_active4 %}active{% endblock %}
 {% block page_current4 %}<span class="sr-only">(current)</span>{% endblock %}
 {% block sous_title%}Contactez-nous{% endblock %}
-{% block lien %}index.html{% endblock %}
+{% block lien %}{{ url_for('index_page') }}{% endblock %}
 {% block last_page %}Accueil{% endblock %}
 {% block current_page %}Contact{% endblock %}
 {% block bar %}
@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="col-lg-6 mt-lg-0 mt-5 contact-right">
-          <form action="confirmation.html" method="post" class="signin-form">
+          <form action="{{ url_for('confirmation_page') }}" class="signin-form">
             <div class="input-grids">
               <div class="form-group">
                 <input type="text" name="clientName" id="clientName" placeholder="Nom et prenom*" class="contact-input" />

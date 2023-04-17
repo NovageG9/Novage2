@@ -5,7 +5,7 @@ import openai
 
 app = Flask(__name__)
 app.secret_key = 'asdgagerger2dfg224t2'
-openai.api_key = "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"
+openai.api_key = "OpenAI-API-key"
 
 # 定义 ChatGPT 的初始对话状态
 conversation = []
@@ -198,6 +198,10 @@ def add_comm(lieu_id):
 @app.route('/politique')
 def politique_page():
     return render_template('politique.html')
+
+@app.route('/confirmation')
+def confirmation_page():
+    return render_template('confirmation.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])

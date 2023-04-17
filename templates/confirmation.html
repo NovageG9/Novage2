@@ -1,0 +1,30 @@
+{% extends "layout_contenu.html" %}
+{% block title %} Destinations {% endblock %}
+{% block page_active4 %}active{% endblock %}
+{% block page_current4 %}<span class="sr-only">(current)</span>{% endblock %}
+{% block sous_title%}Contactez-nous{% endblock %}
+{% block lien %}{{ url_for('contact_page') }}{% endblock %}
+{% block last_page %}Accueil{% endblock %}
+{% block current_page %}Contact{% endblock %}
+{% block bar %}
+<section class="w3l-contact" id="contact">
+  <div class="contact-infubd py-5">
+    <div class="container py-lg-3">
+      <div class="contact-grids row">
+        <div class="col-lg-6 contact-left">
+          <div class="partners">
+            <div class="cont-details">
+              <h5>Confirmation</h5>
+              <p class="mt-3 mb-4">Bonjour, Nous avons bien enregistrer vos infos, Un de nos collègues prendra contact avec vous dans les plus brefs délais.
+              <br> A très bientôt!
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+</section>
+{% endblock %}
+
