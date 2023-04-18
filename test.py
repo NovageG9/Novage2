@@ -5,7 +5,7 @@ import openai
 
 app = Flask(__name__)
 app.secret_key = 'asdgagerger2dfg224t2'
-openai.api_key = "OpenAI-API-key"
+openai.api_key = "openai-api-key"
 
 # 定义 ChatGPT 的初始对话状态
 conversation = []
